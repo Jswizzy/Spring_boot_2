@@ -73,10 +73,8 @@ public class DesignTacoController {
     public String processDesign(@Valid Design design, Errors errors) {
         if (errors.hasErrors()) {
 
-            List<FieldError> fieldErrors = errors.getFieldErrors();
-            for (FieldError e : fieldErrors) {
-                System.out.println(" -- " + e.getField());
-            }
+            errors.getFieldErrors()
+                    .forEach(e -> System.out.println(" -- " + e.getField()));
 
             return "design";
         }
